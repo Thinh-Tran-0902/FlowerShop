@@ -9,4 +9,8 @@
         android:icon="@drawable/ic_logout_icon"
         android:title="Log Out"
         app:showAsAction="ifRoom"></item>
+    <item android:id="@+id/homemenu"
+        android:icon="@drawable/ic_home_menu"
+        android:title="Home Page"
+        app:showAsAction="ifRoom"></item>
 </menu>

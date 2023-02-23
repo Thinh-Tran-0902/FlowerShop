@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -17,9 +16,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.flowershop.adapter.FlowerAdapter;
 import com.example.flowershop.models.Flower;
@@ -73,7 +69,7 @@ public class ShopPageActivity extends AppCompatActivity {
 
         Notification noti = builder.build();
 
-        notificationManager.notify(1, builder.build());
+        notificationManager.notify(1, noti);
     }
 
     // Menu -------------------------------------------------------
@@ -87,17 +83,20 @@ public class ShopPageActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.logoutmenu:
-                Intent in = new Intent(ShopPageActivity.this, MainActivity.class);
+            case R.id.homemenu:
+                Intent in = new Intent(this, ShopPageActivity.class);
                 startActivity(in);
                 return true;
-            case R.id.cartmenu:
-                Intent in2 = new Intent(ShopPageActivity.this, AddToCart.class);
+            case R.id.logoutmenu:
+                Intent in2 = new Intent(this, MainActivity.class);
                 startActivity(in2);
+                return true;
+            case R.id.cartmenu:
+                Intent in3 = new Intent(this, AddToCart.class);
+                startActivity(in3);
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
     // Menu -------------------------------------------------------
-
 }
