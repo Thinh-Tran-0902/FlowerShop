@@ -34,14 +34,14 @@ public class ShopPageActivity extends AppCompatActivity {
         //data recyclerView
         rcv = findViewById(R.id.rcv_listHoa);
         List<Flower> listhoa = new ArrayList<>();
-        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa", 10000, "White"));
-        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa", 10000, "White"));
-        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa", 10000, "White"));
-        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa", 10000, "White"));
-        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa", 10000, "White"));
+        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 1", 10000, "White"));
+        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 2", 10000, "White"));
+        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 3", 10000, "White"));
+        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 4", 10000, "White"));
+        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 5", 10000, "White"));
 
         // get data to show in RecyclerView
-        FlowerAdapter flowerAdapter = new FlowerAdapter(listhoa);
+        FlowerAdapter flowerAdapter = new FlowerAdapter(listhoa, this);
         rcv.setAdapter(flowerAdapter);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         rcv.setLayoutManager(gridLayoutManager);

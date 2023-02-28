@@ -1,6 +1,8 @@
 package com.example.flowershop.models;
 
-public class Flower {
+import java.io.Serializable;
+
+public class Flower implements Serializable {
     private int id;
     private int adminId;
     private int categoryId;

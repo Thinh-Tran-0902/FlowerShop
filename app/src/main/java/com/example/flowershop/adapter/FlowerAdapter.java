@@ -1,5 +1,8 @@
 package com.example.flowershop.adapter;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,8 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.flowershop.Detail_Flower_Activity;
 import com.example.flowershop.R;
 import com.example.flowershop.models.Flower;
 
@@ -16,9 +21,11 @@ import java.util.List;
 
 public class FlowerAdapter extends  RecyclerView.Adapter<FlowerAdapter.FlowerViewHolder>{
     private List<Flower> listHoa;
+    private Context context;
 
-    public FlowerAdapter(List<Flower> listHoa) {
+    public FlowerAdapter(List<Flower> listHoa, Context context) {
         this.listHoa = listHoa;
+        this.context = context;
     }
 
     @NonNull
@@ -35,6 +42,16 @@ public class FlowerAdapter extends  RecyclerView.Adapter<FlowerAdapter.FlowerVie
 
         holder.imgHoa.setImageResource(flower.getImg());
         holder.tvname.setText(flower.getName());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, Detail_Flower_Activity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("FLOWER", flower);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -46,10 +63,14 @@ public class FlowerAdapter extends  RecyclerView.Adapter<FlowerAdapter.FlowerVie
     public class FlowerViewHolder extends RecyclerView.ViewHolder{
         private ImageView imgHoa;
         private TextView tvname;
+        private CardView cardView;
         public FlowerViewHolder(@NonNull View itemView) {
             super(itemView);
             imgHoa = itemView.findViewById(R.id.img_hoa);
             tvname = itemView.findViewById(R.id.tv_nameHoa);
+            cardView = itemView.findViewById(R.id.cardviewHoa);
         }
     }
+
+    void release(){ context = null; }
 }
