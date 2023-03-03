@@ -35,8 +35,14 @@ public class LoginActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(user) || TextUtils.isEmpty(pass)){
                     Toast.makeText(LoginActivity.this, "All fields Required ", Toast.LENGTH_SHORT).show();
 
-                } else{
+                }
+                else{
+
+
+
                     Boolean checkUserPass = DB.checkUsernamePassword(user, pass);
+
+
                     if(checkUserPass == false){
                         Toast.makeText(LoginActivity.this, "Username or Password incorrect", Toast.LENGTH_SHORT).show();
                     }else{
