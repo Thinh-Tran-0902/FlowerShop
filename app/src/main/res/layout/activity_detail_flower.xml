@@ -9,33 +9,35 @@
 
     <ImageView
         android:id="@+id/img_hoaselect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="398dp"
+        android:layout_height="306dp"
         android:layout_margin="10dp"
-        android:src="@drawable/flower"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/flower" />
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="386dp"
+        android:layout_height="60dp"
         android:layout_margin="10dp"
+        android:textAlignment="center"
         android:text="TextView"
-        android:textSize="34sp" />
+        android:textSize="40sp" />
 
     <TextView
         android:id="@+id/tv_color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="386dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="386dp"
+        android:layout_height="60dp"
         android:layout_margin="10dp"
         android:text="TextView"
         android:textSize="34sp" />
 
-    <TextView
-        android:id="@+id/tv_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="TextView"
-        android:textSize="34sp" />
 </LinearLayout>
