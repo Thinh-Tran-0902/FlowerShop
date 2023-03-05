@@ -16,7 +16,7 @@ import java.nio.channels.InterruptedByTimeoutException;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText username, password, repassword;
+    EditText username, password, repassword, gender, address, name;
     Button signUp, signIn , btnSignInF;
     DBHelper DB;
 
@@ -27,10 +27,14 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         repassword = findViewById(R.id.repassword);
+        gender = findViewById(R.id.tv_gender);
+        address = findViewById(R.id.tv_address);
+        name = findViewById(R.id.tv_name);
         signIn = findViewById(R.id.btnAccount);
         signUp = findViewById(R.id.btnRegister);
         btnSignInF = findViewById(R.id.btnLoginF);
         DB = new DBHelper(this);
+
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,13 +50,19 @@ public class MainActivity extends AppCompatActivity {
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
                 String repass= repassword.getText().toString();
-                if(TextUtils.isEmpty(user) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(repass)){
+                String genderTemp = gender.getText().toString();
+                String addressTemp = address.getText().toString();
+                String nameTemp = name.getText().toString();
+                int roleId = 2;
+                Users users = new Users(user,pass,nameTemp,addressTemp,genderTemp,roleId);
+                if(TextUtils.isEmpty(user) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(repass) ||
+                        TextUtils.isEmpty(genderTemp) || TextUtils.isEmpty(addressTemp) || TextUtils.isEmpty(nameTemp)){
                     Toast.makeText(MainActivity.this, "All fields Required", Toast.LENGTH_SHORT).show();
                 } else{
                     if(pass.equals(repass)){
                         Boolean checkUser = DB.checkUsername(user);
                         if(checkUser == false){
-                            Boolean insert = DB.insertData(user,pass);
+                            Boolean insert = DB.insertData(users);
                             if(insert == true){
                                 Toast.makeText(MainActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MainActivity.this,ShopPageActivity.class);
