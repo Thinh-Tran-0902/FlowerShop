@@ -10,6 +10,15 @@ public class Flower implements Serializable {
     private String name;
     private int price;
     private String color;
+    private String desciption;
+
+    public String getDesciption() {
+        return desciption;
+    }
+
+    public void setDesciption(String desciption) {
+        this.desciption = desciption;
+    }
 
     public int getId() {
         return id;
@@ -67,7 +76,7 @@ public class Flower implements Serializable {
         this.color = color;
     }
 
-    public Flower(int id, int adminId, int categoryId, int img, String name, int price, String color) {
+    public Flower(int id, int adminId, int categoryId, int img, String name, int price, String color, String desciption) {
         this.id = id;
         this.adminId = adminId;
         this.categoryId = categoryId;
@@ -75,6 +84,7 @@ public class Flower implements Serializable {
         this.name = name;
         this.price = price;
         this.color = color;
+        this.desciption = desciption;
     }
 
     public Flower() {

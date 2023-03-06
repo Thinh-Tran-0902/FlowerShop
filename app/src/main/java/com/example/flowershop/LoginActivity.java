@@ -52,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                     } else if(checkUserPass == true){
                         Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, ShopPageActivity.class);
+                        intent.putExtra("username", user);
                         startActivity(intent);
                     }
                 }
