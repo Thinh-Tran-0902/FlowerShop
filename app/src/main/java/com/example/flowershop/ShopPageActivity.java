@@ -34,11 +34,21 @@ public class ShopPageActivity extends AppCompatActivity {
         //data recyclerView
         rcv = findViewById(R.id.rcv_listHoa);
         List<Flower> listhoa = new ArrayList<>();
-        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 1", 10000, "White"));
-        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 2", 10000, "White"));
-        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 3", 10000, "White"));
-        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 4", 10000, "White"));
-        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 5", 10000, "White"));
+        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 1", 10000, "White",
+                "Những bông hoa trắng muốt thơm ngào ngạt khiến vua chúa thời xưa cũng phải hạ mình" +
+                        " ra thưởng thức. Cánh hoa nhỏ dài và rất nhiều cánh nở bung hút mắt"));
+        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 1", 10000, "White",
+                "Những bông hoa trắng muốt thơm ngào ngạt khiến vua chúa thời xưa cũng phải hạ mình" +
+                        " ra thưởng thức. Cánh hoa nhỏ dài và rất nhiều cánh nở bung hút mắt"));
+        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 1", 10000, "White",
+                "Những bông hoa trắng muốt thơm ngào ngạt khiến vua chúa thời xưa cũng phải hạ mình" +
+                        " ra thưởng thức. Cánh hoa nhỏ dài và rất nhiều cánh nở bung hút mắt"));
+        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 1", 10000, "White",
+                "Những bông hoa trắng muốt thơm ngào ngạt khiến vua chúa thời xưa cũng phải hạ mình" +
+                        " ra thưởng thức. Cánh hoa nhỏ dài và rất nhiều cánh nở bung hút mắt"));
+        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 1", 10000, "White",
+                "Những bông hoa trắng muốt thơm ngào ngạt khiến vua chúa thời xưa cũng phải hạ mình" +
+                        " ra thưởng thức. Cánh hoa nhỏ dài và rất nhiều cánh nở bung hút mắt"));
 
         // get data to show in RecyclerView
         FlowerAdapter flowerAdapter = new FlowerAdapter(listhoa, this);
