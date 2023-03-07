@@ -92,7 +92,7 @@ public class ShopPageActivity extends AppCompatActivity {
                 startActivity(in2);
                 return true;
             case R.id.cartmenu:
-                Intent in3 = new Intent(this, AddToCart.class);
+                Intent in3 = new Intent(this, CartActivity.class);
                 startActivity(in3);
                 return true;
         }

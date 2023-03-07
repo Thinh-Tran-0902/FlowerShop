@@ -5,40 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Detail_Flower_Activity">
-
-    <ImageView
-        android:id="@+id/img_hoaselect"
-        android:layout_width="398dp"
-        android:layout_height="306dp"
-        android:layout_margin="10dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/flower" />
+    tools:context=".Bill">
 
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/bill"
         android:layout_width="386dp"
         android:layout_height="60dp"
         android:layout_margin="10dp"
         android:textAlignment="center"
-        android:text="TextView"
+        android:text="Bill"
         android:textSize="40sp" />
 
     <TextView
-        android:id="@+id/tv_color"
+        android:id="@+id/bill_name"
         android:layout_width="386dp"
         android:layout_height="40dp"
         android:layout_margin="10dp"
-        android:text="TextView"
+        android:text="Name: user01"
         android:textStyle="bold"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/tv_price"
+        android:id="@+id/bill_list"
         android:layout_width="386dp"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:layout_margin="10dp"
-        android:text="TextView"
-        android:textSize="34sp" />
+        android:text="Flower:"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/bill_total"
+        android:layout_width="386dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:text="Total Price:"
+        android:textStyle="bold"
+        android:textSize="20sp" />
 
 </LinearLayout>

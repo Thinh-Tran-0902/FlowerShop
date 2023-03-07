@@ -26,9 +26,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+
+
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("Drop table if exists users");
+        sqLiteDatabase.execSQL("Drop table if exists orders");
         onCreate(sqLiteDatabase);
     }
     public Boolean insertData(Users users){
