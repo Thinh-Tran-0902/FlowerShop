@@ -3,6 +3,7 @@ package com.example.flowershop;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.flowershop.Database.DataBaseFlowerShop;
 import com.example.flowershop.models.DBHelper;
 
 import java.nio.channels.InterruptedByTimeoutException;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         signUp = findViewById(R.id.btnRegister);
         btnSignInF = findViewById(R.id.btnLoginF);
         DB = new DBHelper(this);
+
+        createDBFlowerShop();
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,11 +93,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    void createDBFlowerShop(){
+        try {
+            //deleteDatabase(DataBaseFlowerShop.DATABASE_NAME);
 
+            SQLiteDatabase db = openOrCreateDatabase(DataBaseFlowerShop.DATABASE_NAME, MODE_PRIVATE, null);
+            System.out.println("==> create or open DB "+ DataBaseFlowerShop.DATABASE_NAME +" success");
+            System.out.println("db: " +db);
 
+            db.execSQL(DataBaseFlowerShop.CREATE_TABLE_Category);
+            System.out.println("=====> [Category] create success");
 
+            db.execSQL(DataBaseFlowerShop.CREATE_TABLE_Flower);
+            System.out.println("=====> [Flower] create success");
 
+            db.execSQL(DataBaseFlowerShop.CREATE_TABLE_Order);
+            System.out.println("=====> [Order] create success");
+
+            db.execSQL(DataBaseFlowerShop.CREATE_TABLE_User);
+            System.out.println("=====> [User] create success");
+
+            db.execSQL(DataBaseFlowerShop.CREATE_TABLE_OrderDetail);
+            System.out.println("=====> [OrderDetail] create success");
+
+        }catch (Exception ex){
+            System.out.println("error: " + ex.getMessage());
+        }
     }
 
 //    public void login(View v){
