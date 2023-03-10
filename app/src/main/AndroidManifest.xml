@@ -30,6 +30,9 @@
             android:name=".Detail_Flower_Activity"
             android:exported="false" />
         <activity
+            android:name=".Detail_Flower_Admin"
+            android:exported="false" />
+        <activity
             android:name=".AddToCart"
             android:exported="false">
             <meta-data

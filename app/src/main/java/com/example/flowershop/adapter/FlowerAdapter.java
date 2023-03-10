@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.flowershop.Detail_Flower_Activity;
+import com.example.flowershop.Detail_Flower_Admin;
 import com.example.flowershop.R;
 import com.example.flowershop.models.Flower;
 
@@ -22,10 +23,12 @@ import java.util.List;
 public class FlowerAdapter extends  RecyclerView.Adapter<FlowerAdapter.FlowerViewHolder>{
     private List<Flower> listHoa;
     private Context context;
+    private int roleId;
 
-    public FlowerAdapter(List<Flower> listHoa, Context context) {
+    public FlowerAdapter(List<Flower> listHoa, Context context, int roleId) {
         this.listHoa = listHoa;
         this.context = context;
+        this.roleId = roleId;
     }
 
     @NonNull
@@ -45,7 +48,7 @@ public class FlowerAdapter extends  RecyclerView.Adapter<FlowerAdapter.FlowerVie
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, Detail_Flower_Activity.class);
+                Intent intent = new Intent(context, roleId==1? Detail_Flower_Admin.class : Detail_Flower_Activity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("FLOWER", flower);
                 intent.putExtras(bundle);

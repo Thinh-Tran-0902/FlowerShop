@@ -51,7 +51,7 @@ public class ShopPageActivity extends AppCompatActivity {
                         " ra thưởng thức. Cánh hoa nhỏ dài và rất nhiều cánh nở bung hút mắt"));
 
         // get data to show in RecyclerView
-        FlowerAdapter flowerAdapter = new FlowerAdapter(listhoa, this);
+        FlowerAdapter flowerAdapter = new FlowerAdapter(listhoa, this, 2);
         rcv.setAdapter(flowerAdapter);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         rcv.setLayoutManager(gridLayoutManager);
