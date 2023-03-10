@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:id="@+id/listcart"
+>
+
+
+        <ImageView
+            android:id="@+id/img_hoa_cart"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/flower" />
+
+        <TextView
+            android:id="@+id/tv_nameHoa_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name Hoa"
+            android:textAlignment="center"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tv_priceHoa_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price Hoa"
+            android:textAlignment="center"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tv_quantityHoa_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="quantity Hoa"
+            android:textSize="15dp"
+            android:textAlignment="center"
+        />
+
+
+
+</LinearLayout>

@@ -40,7 +40,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".add_to_cart"
+            android:name=".Bill"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".CartActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -1,9 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddToCart">
+    android:background="#ffffff"
+    tools:context=".CartActivity">
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Shopping Cart"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.0"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ListViewCatalog"
+        android:layout_width="408dp"
+        android:layout_height="644dp"
+        android:layout_marginTop="8dp"
+        android:background="#ffffff"
+        android:cacheColorHint="#ffffff"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="spread"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TextView01" />
+
+    <Button
+        android:id="@+id/btnBill"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="Calculate bill"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ListViewCatalog" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+        
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Bill">
+
+    <TextView
+        android:id="@+id/bill"
+        android:layout_width="386dp"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:textAlignment="center"
+        android:text="Bill"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/bill_name"
+        android:layout_width="386dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:text="Name: user01"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/bill_list"
+        android:layout_width="386dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:text="Flower:"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/bill_total"
+        android:layout_width="386dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:text="Total Price:"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+
+</LinearLayout>
