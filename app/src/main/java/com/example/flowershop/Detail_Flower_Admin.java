@@ -31,6 +31,7 @@ public class Detail_Flower_Admin extends AppCompatActivity {
         setContentView(R.layout.admin_detail_flower);
         LinearLayout linearLayout = findViewById(R.id.linear_layout);
 
+
         EditText tvNameFlower = findViewById(R.id.tv_name);
         EditText tvColorFlower = findViewById(R.id.tv_color);
         EditText tvPriceFlower = findViewById(R.id.tv_price);
@@ -51,6 +52,10 @@ public class Detail_Flower_Admin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //save new to database
+
+                //return main admin page
+                Intent intent = new Intent(Detail_Flower_Admin.this, AdminActivity.class);
+                startActivity(intent);
             }
         });
     }

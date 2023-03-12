@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,11 +17,20 @@ import com.example.flowershop.models.Flower;
 
 public class Detail_Flower_Activity extends AppCompatActivity {
 
+    Button btnAddToCart ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_flower);
         LinearLayout linearLayout = findViewById(R.id.linear_layout);
+
+        btnAddToCart = findViewById(R.id.btnAddToCart);
+        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add to cart trong Db
+            }
+        });
 
         TextView tvNameFlower = findViewById(R.id.tv_name);
         TextView tvColorFlower = findViewById(R.id.tv_color);
