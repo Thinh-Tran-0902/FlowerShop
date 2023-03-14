@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +18,19 @@ public class AddNew extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new);
+        Button btnSave = findViewById(R.id.buttonsave);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //lưu hoa vào sqlite
+                //......... làm gì đó
+                Toast.makeText(AddNew.this, "add new flower success", Toast.LENGTH_SHORT).show();
+
+                //trở về trang home page admin
+                Intent intent = new Intent(AddNew.this, AdminActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     // Admin Menu -------------------------------------------------------

@@ -88,8 +88,8 @@
 
         <EditText
             android:id="@+id/tv_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="336dp"
+            android:layout_height="74dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="40dp"

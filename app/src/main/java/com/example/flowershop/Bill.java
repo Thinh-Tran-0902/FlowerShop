@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +16,15 @@ public class Bill extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bill);
+        Button btnCOntinueShopping = findViewById(R.id.btnContinueShopping);
+        btnCOntinueShopping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //trở về trang home page
+                Intent intent = new Intent(Bill.this, ShopPageActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

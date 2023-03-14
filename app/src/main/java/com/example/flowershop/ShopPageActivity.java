@@ -79,7 +79,7 @@ public class ShopPageActivity extends AppCompatActivity {
 
         Notification noti = builder.build();
 
-        notificationManager.notify(1, noti);
+        //notificationManager.notify(1, noti);
     }
 
     // Menu -------------------------------------------------------

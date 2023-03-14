@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.flowershop.models.Flower;
 
@@ -29,6 +30,20 @@ public class Detail_Flower_Admin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_detail_flower);
+
+        Button btnSave = findViewById(R.id.buttonsave);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add to update flower đó
+                //....làm gì đó
+                Toast.makeText(Detail_Flower_Admin.this, "update flower success", Toast.LENGTH_SHORT).show();
+                //trở về trang home page
+                Intent intent = new Intent(Detail_Flower_Admin.this, AdminActivity.class);
+                startActivity(intent);
+            }
+        });
+
         LinearLayout linearLayout = findViewById(R.id.linear_layout);
 
 
