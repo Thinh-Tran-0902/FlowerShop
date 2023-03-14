@@ -52,7 +52,6 @@ public class Detail_Flower_Admin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //save new to database
-
                 //return main admin page
                 Intent intent = new Intent(Detail_Flower_Admin.this, AdminActivity.class);
                 startActivity(intent);
