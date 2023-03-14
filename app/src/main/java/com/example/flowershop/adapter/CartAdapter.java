@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,7 +43,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.imgHoaCart.setImageResource(cart.getImg());
         holder.cartname.setText(cart.getName());
         holder.cartprice.setText("Price:" + Integer.toString(cart.getPrice())+ " vnd");
-        holder.cartquantity.setText("Quantity: " + Integer.toString(cart.getQuantity()));
+        holder.QuantityText.setText("Quantity: ");
+        holder.cartEditQuantity.setText(Integer.toString(cart.getQuantity()));
 
     }
 
@@ -56,7 +58,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         private ImageView imgHoaCart;
         private TextView cartname;
         private TextView cartprice;
-        private TextView cartquantity;
+
+        private TextView QuantityText;
+
+        private EditText cartEditQuantity;
 
 
         public CartViewHolder(@NonNull View itemView) {
@@ -64,7 +69,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             imgHoaCart = itemView.findViewById(R.id.img_hoa_cart);
             cartname = itemView.findViewById(R.id.tv_nameHoa_cart);
             cartprice = itemView.findViewById(R.id.tv_priceHoa_cart);
-            cartquantity = itemView.findViewById(R.id.tv_quantityHoa_cart);
+
+            QuantityText= itemView.findViewById(R.id.tv_QuantityText);
+            cartEditQuantity = itemView.findViewById(R.id.quantity_edit_text);
 
 
         }
