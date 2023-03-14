@@ -98,7 +98,7 @@ public class ShopPageActivity extends AppCompatActivity {
                 startActivity(in);
                 return true;
             case R.id.logoutmenu:
-                Intent in2 = new Intent(this, MainActivity.class);
+                Intent in2 = new Intent(this, LoginActivity.class);
                 startActivity(in2);
                 return true;
             case R.id.cartmenu:
