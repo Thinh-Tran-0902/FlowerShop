@@ -98,7 +98,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/buttonsave"
+            android:id="@+id/btncreate"
             android:layout_width="match_parent"
             android:layout_height="66dp"
             android:layout_margin="10dp"

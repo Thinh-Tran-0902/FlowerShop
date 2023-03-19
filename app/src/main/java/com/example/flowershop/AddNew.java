@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,16 +15,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AddNew extends AppCompatActivity {
 
+    EditText name, color, price, description;
+
+    Button btncreate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new);
-        Button btnSave = findViewById(R.id.buttonsave);
-        btnSave.setOnClickListener(new View.OnClickListener() {
+
+        name = findViewById(R.id.tv_name);
+        color = findViewById(R.id.tv_color);
+        price = findViewById(R.id.tv_price);
+        description = findViewById(R.id.tv_description);
+
+        btncreate = findViewById(R.id.btncreate);
+
+        btncreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //lưu hoa vào sqlite
-                //......... làm gì đó
+
+                //lấy data ở trên insert vào db
+
+
                 Toast.makeText(AddNew.this, "add new flower success", Toast.LENGTH_SHORT).show();
 
                 //trở về trang home page admin

@@ -1,9 +1,6 @@
 package com.example.flowershop;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,10 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.flowershop.Database.DataBaseFlowerShop;
-import com.example.flowershop.models.DBHelper;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.nio.channels.InterruptedByTimeoutException;
+import com.example.flowershop.models.DBHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,15 +33,13 @@ public class MainActivity extends AppCompatActivity {
         btnSignInF = findViewById(R.id.btnLoginF);
         DB = new DBHelper(this);
 
-        createDBFlowerShop();
+        //createDBFlowerShop();
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(intent);
-
-
             }
         });
         signUp.setOnClickListener(new View.OnClickListener() {
@@ -93,11 +87,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
-    void createDBFlowerShop(){
+    /*void createDBFlowerShop(){
         try {
-            deleteDatabase(DataBaseFlowerShop.DATABASE_NAME);
+            //deleteDatabase(DataBaseFlowerShop.DATABASE_NAME);
 
             SQLiteDatabase db = openOrCreateDatabase(DataBaseFlowerShop.DATABASE_NAME, MODE_PRIVATE, null);
             System.out.println("==> create or open DB "+ DataBaseFlowerShop.DATABASE_NAME +" success");
@@ -121,7 +117,9 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception ex){
             System.out.println("error: " + ex.getMessage());
         }
-    }
+    }*/
+
+
 
 //    public void login(View v){
 //        String useremail = email.getText().toString();

@@ -1,16 +1,21 @@
 package com.example.flowershop;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.flowershop.Database.DataBaseFlowerShop;
 import com.example.flowershop.adapter.FlowerAdapter;
 import com.example.flowershop.models.Flower;
 
@@ -29,7 +34,11 @@ public class AdminActivity extends AppCompatActivity {
         //data recyclerView
         rcv = findViewById(R.id.rcv_listHoa);
         List<Flower> listhoa = new ArrayList<>();
-        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 1", 10000, "White",
+
+        /*listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 1", 10000, "White",
+                "Những bông hoa trắng muốt thơm ngào ngạt khiến vua chúa thời xưa cũng phải hạ mình" +
+                        " ra thưởng thức. Cánh hoa nhỏ dài và rất nhiều cánh nở bung hút mắt"));
+        *//*listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 1", 10000, "White",
                 "Những bông hoa trắng muốt thơm ngào ngạt khiến vua chúa thời xưa cũng phải hạ mình" +
                         " ra thưởng thức. Cánh hoa nhỏ dài và rất nhiều cánh nở bung hút mắt"));
         listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 1", 10000, "White",
@@ -40,10 +49,49 @@ public class AdminActivity extends AppCompatActivity {
                         " ra thưởng thức. Cánh hoa nhỏ dài và rất nhiều cánh nở bung hút mắt"));
         listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 1", 10000, "White",
                 "Những bông hoa trắng muốt thơm ngào ngạt khiến vua chúa thời xưa cũng phải hạ mình" +
-                        " ra thưởng thức. Cánh hoa nhỏ dài và rất nhiều cánh nở bung hút mắt"));
-        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 1", 10000, "White",
-                "Những bông hoa trắng muốt thơm ngào ngạt khiến vua chúa thời xưa cũng phải hạ mình" +
-                        " ra thưởng thức. Cánh hoa nhỏ dài và rất nhiều cánh nở bung hút mắt"));
+                        " ra thưởng thức. Cánh hoa nhỏ dài và rất nhiều cánh nở bung hút mắt"));*/
+
+        //tạo.mở CSDL SQLite
+        SQLiteDatabase myDatabase = openOrCreateDatabase
+                (DataBaseFlowerShop.DATABASE_NAME, MODE_PRIVATE, null);
+
+        // add 1 demo flower
+        ContentValues value = new ContentValues();
+        value.put(DataBaseFlowerShop.TABLE_Flower_col_id, 1);      //lưu theo key, lưu ý key phải trùng vs tên att trong table ta cần lưu
+        value.put(DataBaseFlowerShop.TABLE_Flower_col_adminId, 1);
+        value.put(DataBaseFlowerShop.TABLE_Flower_col_categoryID, 1);
+        value.put(DataBaseFlowerShop.TABLE_Flower_col_name, "Kha");
+        value.put(DataBaseFlowerShop.TABLE_Flower_col_avatar, 1);
+        value.put(DataBaseFlowerShop.TABLE_Flower_col_price, 99000);
+        value.put(DataBaseFlowerShop.TABLE_Flower_col_color, "Pink");
+        value.put(DataBaseFlowerShop.TABLE_Flower_col_description, "Kha Kha Kha KhaKha Kha Kha KhaKha Kha Kha Kha");
+
+        //hàm insert sẽ đưa value từ obj value ở trên vào Db, return -1 là nó fail, ko thì return index record đc ghi
+        if(myDatabase.insert(DataBaseFlowerShop.TABLE_Flower, null, value) == -1){
+            Toast.makeText(AdminActivity.this, "insert fail", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(AdminActivity.this, "insert success", Toast.LENGTH_SHORT).show();
+        }
+
+        Cursor cursor = myDatabase.query(DataBaseFlowerShop.TABLE_Flower, null, null, null, null, null, null);
+        cursor.moveToFirst(); //di chuyển nó đến bãn record  đầu tiên
+        while (cursor.isAfterLast() == false){      //check xem nó trỏ đến bảng ghi cuối cùng chưa
+            Flower f = new Flower();
+            f.setId(Integer.parseInt(cursor.getString(0)));
+            f.setAdminId(Integer.parseInt(cursor.getString(1)));
+            f.setCategoryId(Integer.parseInt(cursor.getString(2)));
+            f.setName(cursor.getString(3));
+            f.setImg(R.drawable.flower);
+            f.setPrice(Integer.parseInt(cursor.getString(5)));
+            f.setColor(cursor.getString(6));
+            f.setDescription(cursor.getString(7));
+            // cursor.getString(0): index thoe thứ tự cột,
+            // nếu ko nhớ index: String malop = cursor.getString(cursor.getColumnIndex("malop"))
+            listhoa.add(f);
+            cursor.moveToNext();
+        }
+        cursor.close();
+
 
         // get data to show in RecyclerView
         FlowerAdapter flowerAdapter = new FlowerAdapter(listhoa, this, 1);
