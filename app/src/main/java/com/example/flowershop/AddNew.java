@@ -1,6 +1,9 @@
 package com.example.flowershop;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.flowershop.Database.DataBaseFlowerShop;
 
 public class AddNew extends AppCompatActivity {
 
@@ -31,14 +36,36 @@ public class AddNew extends AppCompatActivity {
 
         btncreate = findViewById(R.id.btncreate);
 
+        SQLiteDatabase myDatabase = openOrCreateDatabase
+                (DataBaseFlowerShop.DATABASE_NAME, MODE_PRIVATE, null);
+        long count = DatabaseUtils.queryNumEntries(myDatabase, DataBaseFlowerShop.TABLE_Flower);
+
         btncreate.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
+                String new_name = name.getText().toString();
+                String new_color = color.getText().toString();
+                String new_price = price.getText().toString();
+                Integer final_price = Integer.parseInt(new_price);
+                String new_description = description.getText().toString();
                 //lấy data ở trên insert vào db
+                ContentValues value = new ContentValues();
+                value.put(DataBaseFlowerShop.TABLE_Flower_col_id, count+1);      //lưu theo key, lưu ý key phải trùng vs tên att trong table ta cần lưu
+                value.put(DataBaseFlowerShop.TABLE_Flower_col_adminId, 1);
+                value.put(DataBaseFlowerShop.TABLE_Flower_col_categoryID, 1);
+                value.put(DataBaseFlowerShop.TABLE_Flower_col_name, new_name);
+                value.put(DataBaseFlowerShop.TABLE_Flower_col_avatar, 1);
+                value.put(DataBaseFlowerShop.TABLE_Flower_col_price, final_price);
+                value.put(DataBaseFlowerShop.TABLE_Flower_col_color, new_color);
+                value.put(DataBaseFlowerShop.TABLE_Flower_col_description, new_description);
 
-
-                Toast.makeText(AddNew.this, "add new flower success", Toast.LENGTH_SHORT).show();
+                if(myDatabase.insert(DataBaseFlowerShop.TABLE_Flower, null, value) == -1){
+                    Toast.makeText(AddNew.this, "insert fail", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(AddNew.this, "insert success", Toast.LENGTH_SHORT).show();
+                }
 
                 //trở về trang home page admin
                 Intent intent = new Intent(AddNew.this, AdminActivity.class);
