@@ -15,7 +15,8 @@ public class DataBaseFlowerShop  {  //extends SQLiteOpenHelper
     public static final String TABLE_User_col_name = "name";
     public static final String TABLE_User_col_address = "address";
     public static final String TABLE_User_col_gender = "gender";
-    public static final String TABLE_User_col_avatar = "avatar";
+   // public static final String TABLE_User_col_avatar = "avatar";
+    public static final String TABLE_User_col_role = "roleId";
 
     public static final String TABLE_Flower = "Flower";
     public static final String TABLE_Flower_col_id = "id";
@@ -71,7 +72,7 @@ public class DataBaseFlowerShop  {  //extends SQLiteOpenHelper
                     + TABLE_User_col_name + " TEXT NOT NULL, "
                     + TABLE_User_col_address + " TEXT NOT NULL, "
                     + TABLE_User_col_gender + " TEXT NOT NULL, "
-                    + TABLE_User_col_avatar + " TEXT NOT NULL"
+                    + TABLE_User_col_role + " INTEGER NOT NULL"
                     + " );";
 
     public static final String CREATE_TABLE_Order = "CREATE TABLE [" + TABLE_Order + "] "

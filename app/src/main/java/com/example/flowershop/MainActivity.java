@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     void createDBFlowerShop(){
         try {
-            //deleteDatabase(DataBaseFlowerShop.DATABASE_NAME);
+            deleteDatabase(DataBaseFlowerShop.DATABASE_NAME);
 
             SQLiteDatabase db = openOrCreateDatabase(DataBaseFlowerShop.DATABASE_NAME, MODE_PRIVATE, null);
             System.out.println("==> create or open DB "+ DataBaseFlowerShop.DATABASE_NAME +" success");
@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
             db.execSQL(DataBaseFlowerShop.CREATE_TABLE_Order);
             System.out.println("=====> [Order] create success");
 
-            db.execSQL(DataBaseFlowerShop.CREATE_TABLE_User);
-            System.out.println("=====> [User] create success");
+            //db.execSQL(DataBaseFlowerShop.CREATE_TABLE_User);
+            //System.out.println("=====> [User] create success");
 
             db.execSQL(DataBaseFlowerShop.CREATE_TABLE_OrderDetail);
             System.out.println("=====> [OrderDetail] create success");
