@@ -58,33 +58,25 @@ public class CartActivity extends AppCompatActivity {
         }
         cursor.close();
 
-//        List<FlowerQuantity> listRs = new ArrayList<>();
-//        //lọc lấy những flower moi loại tồn tại trong cart
-//        for (FlowerQuantity item: cartList) {
-//            if(checkExist(item, listRs) == null){
-//                listRs.add(item);
-//                cartList.remove(item);
-//            }
-//        }
+        List<FlowerQuantity> listRs = new ArrayList<>();
+        //lọc lấy những flower moi loại tồn tại trong cart
+        for (FlowerQuantity item: cartList) {
+            if(checkExist(item, listRs) == null){
+                FlowerQuantity ele = (FlowerQuantity) item.clone();
+                ele.setQuantity(0);
+                listRs.add(ele);
+            }
+        }
 //        //gọp quantity của hao giống nhau lại
-//        FlowerQuantity tmp = null;
-//        for (FlowerQuantity item: cartList) {
-//            tmp = checkExist(item, listRs); //lấy item tương ứng bên cart ra
-//            int intdex= -1;
-//            for (int i = 0; i < listRs.size(); i++){
-//                if(listRs.get(i).getFlower().getId() == item.getFlower().getId()){
-//                    intdex = i;
-//                }
-//            }
-//
-//            if(tmp != null){    //có tồn tại
-//                listRs.get(intdex).setQuantity(listRs.get(intdex).getQuantity() + item.getQuantity());
-//            }
-//        }
+        FlowerQuantity tmp = null;
+        for (FlowerQuantity item: cartList) {
+            int index = getIndexFromList(item.getFlower().getId(), listRs);
+            listRs.get(index).setQuantity(listRs.get(index).getQuantity() + item.getQuantity());
+        }
 
 
         // get data to show in RecyclerView
-        CartAdapter cartAdapter = new CartAdapter(cartList, this);
+        CartAdapter cartAdapter = new CartAdapter(listRs, this);
         rcv_cart.setAdapter(cartAdapter);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         rcv_cart.setLayoutManager(gridLayoutManager);
@@ -100,10 +92,19 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(CartActivity.this, Bill.class);
-                intent.putExtra("cart", (Serializable) cartList);
+                intent.putExtra("cart", (Serializable) listRs);
                 startActivity(intent);
             }
         });
+    }
+
+    private int getIndexFromList(int id, List<FlowerQuantity> listRs) {
+        for(int i = 0; i < listRs.size(); i++){
+            if(listRs.get(i).getFlower().getId() == id){
+                return i;
+            }
+        }
+        return -1;
     }
 
     private FlowerQuantity checkExist(FlowerQuantity item, List<FlowerQuantity> listRs) {

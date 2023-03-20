@@ -2,7 +2,7 @@ package com.example.flowershop.models;
 
 import java.io.Serializable;
 
-public class FlowerQuantity implements Serializable {
+public class FlowerQuantity implements Serializable, Cloneable {
     private Flower flower;
     private int quantity;
 
@@ -29,4 +29,13 @@ public class FlowerQuantity implements Serializable {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+    @Override
+    public FlowerQuantity clone() {
+        try {
+            return (FlowerQuantity) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
 }
