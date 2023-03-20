@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -56,22 +59,22 @@ public class AdminActivity extends AppCompatActivity {
                 (DataBaseFlowerShop.DATABASE_NAME, MODE_PRIVATE, null);
 
         // add 1 demo flower
-        ContentValues value = new ContentValues();
-        value.put(DataBaseFlowerShop.TABLE_Flower_col_id, 1);      //lưu theo key, lưu ý key phải trùng vs tên att trong table ta cần lưu
-        value.put(DataBaseFlowerShop.TABLE_Flower_col_adminId, 1);
-        value.put(DataBaseFlowerShop.TABLE_Flower_col_categoryID, 1);
-        value.put(DataBaseFlowerShop.TABLE_Flower_col_name, "Kha");
-        value.put(DataBaseFlowerShop.TABLE_Flower_col_avatar, 1);
-        value.put(DataBaseFlowerShop.TABLE_Flower_col_price, 99000);
-        value.put(DataBaseFlowerShop.TABLE_Flower_col_color, "Pink");
-        value.put(DataBaseFlowerShop.TABLE_Flower_col_description, "Kha Kha Kha KhaKha Kha Kha KhaKha Kha Kha Kha");
-
-        //hàm insert sẽ đưa value từ obj value ở trên vào Db, return -1 là nó fail, ko thì return index record đc ghi
-        if(myDatabase.insert(DataBaseFlowerShop.TABLE_Flower, null, value) == -1){
-            Toast.makeText(AdminActivity.this, "insert fail", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(AdminActivity.this, "insert success", Toast.LENGTH_SHORT).show();
-        }
+//        ContentValues value = new ContentValues();
+//        value.put(DataBaseFlowerShop.TABLE_Flower_col_id, 1);      //lưu theo key, lưu ý key phải trùng vs tên att trong table ta cần lưu
+//        value.put(DataBaseFlowerShop.TABLE_Flower_col_adminId, 1);
+//        value.put(DataBaseFlowerShop.TABLE_Flower_col_categoryID, 1);
+//        value.put(DataBaseFlowerShop.TABLE_Flower_col_name, "Kha");
+//        value.put(DataBaseFlowerShop.TABLE_Flower_col_avatar, 1);
+//        value.put(DataBaseFlowerShop.TABLE_Flower_col_price, 99000);
+//        value.put(DataBaseFlowerShop.TABLE_Flower_col_color, "Pink");
+//        value.put(DataBaseFlowerShop.TABLE_Flower_col_description, "Kha Kha Kha KhaKha Kha Kha KhaKha Kha Kha Kha");
+//
+//        //hàm insert sẽ đưa value từ obj value ở trên vào Db, return -1 là nó fail, ko thì return index record đc ghi
+//        if(myDatabase.insert(DataBaseFlowerShop.TABLE_Flower, null, value) == -1){
+//            Toast.makeText(AdminActivity.this, "insert fail", Toast.LENGTH_SHORT).show();
+//        }else {
+//            Toast.makeText(AdminActivity.this, "insert success", Toast.LENGTH_SHORT).show();
+//        }
 
         Cursor cursor = myDatabase.query(DataBaseFlowerShop.TABLE_Flower, null, null, null, null, null, null);
         cursor.moveToFirst(); //di chuyển nó đến bãn record  đầu tiên
@@ -92,6 +95,26 @@ public class AdminActivity extends AppCompatActivity {
         }
         cursor.close();
 
+        Button btnSearch = findViewById(R.id.btnsearcha);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText search = findViewById(R.id.edSearch);
+                Intent intent = new Intent(AdminActivity.this, AdminActivity.class);
+                intent.putExtra("search", search.getText());
+                List<Flower> listsearch = new ArrayList<>();
+                for (Flower item: listhoa) {
+                    if(item.getName().contains(search.getText())){
+                        listsearch.add(item);
+                    }
+                }
+                // get data to show in RecyclerView
+                FlowerAdapter flowerAdapter = new FlowerAdapter(listsearch, AdminActivity.this, 2);
+                rcv.setAdapter(flowerAdapter);
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(AdminActivity.this, 3);
+                rcv.setLayoutManager(gridLayoutManager);
+            }
+        });
 
         // get data to show in RecyclerView
         FlowerAdapter flowerAdapter = new FlowerAdapter(listhoa, this, 1);

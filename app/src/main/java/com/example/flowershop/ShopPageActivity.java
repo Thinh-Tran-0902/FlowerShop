@@ -18,6 +18,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.flowershop.Database.DataBaseFlowerShop;
 import com.example.flowershop.adapter.FlowerAdapter;
@@ -28,15 +31,18 @@ import java.util.List;
 
 public class ShopPageActivity extends AppCompatActivity {
     private RecyclerView rcv;
+    List<Flower> listhoa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_page);
 
+        Button btnSearch = findViewById(R.id.btnsearch);
+
         //data recyclerView
         rcv = findViewById(R.id.rcv_listHoa);
-        List<Flower> listhoa = new ArrayList<>();
+        listhoa = new ArrayList<>();
 //        listhoa.add(new Flower(1, 1, 1, R.drawable.flower, "Hoa 1", 10000, "White",
 //                "Những bông hoa trắng muốt thơm ngào ngạt khiến vua chúa thời xưa cũng phải hạ mình" +
 //                        " ra thưởng thức. Cánh hoa nhỏ dài và rất nhiều cánh nở bung hút mắt"));
@@ -74,6 +80,26 @@ public class ShopPageActivity extends AppCompatActivity {
             cursor.moveToNext();
         }
         cursor.close();
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText search = findViewById(R.id.edSearch);
+                Intent intent = new Intent(ShopPageActivity.this, ShopPageActivity.class);
+                intent.putExtra("search", search.getText());
+                List<Flower> listsearch = new ArrayList<>();
+                for (Flower item: listhoa) {
+                    if(item.getName().contains(search.getText())){
+                        listsearch.add(item);
+                    }
+                }
+                // get data to show in RecyclerView
+                FlowerAdapter flowerAdapter = new FlowerAdapter(listsearch, ShopPageActivity.this, 2);
+                rcv.setAdapter(flowerAdapter);
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(ShopPageActivity.this, 3);
+                rcv.setLayoutManager(gridLayoutManager);
+            }
+        });
 
         // get data to show in RecyclerView
         FlowerAdapter flowerAdapter = new FlowerAdapter(listhoa, this, 2);

@@ -14,7 +14,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/flower" />
+            android:src="@drawable/flower"
+            />
 
         <TextView
             android:id="@+id/tv_nameHoa_cart"

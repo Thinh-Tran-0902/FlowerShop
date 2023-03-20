@@ -96,6 +96,9 @@ public class LoginActivity extends AppCompatActivity {
             db.execSQL(DataBaseFlowerShop.CREATE_TABLE_OrderDetail);
             System.out.println("=====> [OrderDetail] create success");
 
+            db.execSQL(DataBaseFlowerShop.CREATE_TABLE_Cart);
+            System.out.println("=====> [Cart] create success");
+
         }catch (Exception ex){
             System.out.println("error: " + ex.getMessage());
         }

@@ -18,14 +18,15 @@ import com.example.flowershop.Detail_Flower_Activity;
 import com.example.flowershop.R;
 import com.example.flowershop.models.Cart;
 import com.example.flowershop.models.Flower;
+import com.example.flowershop.models.FlowerQuantity;
 
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder>{
-    private List<Cart> cartList;
+    private List<FlowerQuantity> cartList;
     private Context context;
 
-    public CartAdapter(List<Cart> cartList, Context context) {
+    public CartAdapter(List<FlowerQuantity> cartList, Context context) {
         this.cartList = cartList;
         this.context = context;
     }
@@ -37,12 +38,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CartAdapter.CartViewHolder holder, int position) {
-        Cart cart = cartList.get(position);
+        FlowerQuantity cart = cartList.get(position);
         if(cart == null) return;
 
-        holder.imgHoaCart.setImageResource(cart.getImg());
-        holder.cartname.setText(cart.getName());
-        holder.cartprice.setText("Price:" + Integer.toString(cart.getPrice())+ " vnd");
+//        holder.imgHoaCart.setImageResource(cart.getImg());
+//        holder.cartname.setText(cart.getName());
+//        holder.cartprice.setText("Price:" + Integer.toString(cart.getPrice())+ " vnd");
+        holder.imgHoaCart.setImageResource(cart.getFlower().getImg());
+        holder.cartname.setText(cart.getFlower().getName());
+        holder.cartprice.setText("Price:" + Integer.toString(cart.getFlower().getPrice())+ " vnd");
         holder.QuantityText.setText("Quantity: ");
         holder.cartEditQuantity.setText(Integer.toString(cart.getQuantity()));
 

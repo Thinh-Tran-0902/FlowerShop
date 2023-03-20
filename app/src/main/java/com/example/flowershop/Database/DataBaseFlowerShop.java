@@ -45,8 +45,18 @@ public class DataBaseFlowerShop  {  //extends SQLiteOpenHelper
     public static final String TABLE_OrderDetail_col_orderId = "orderId";
     public static final String TABLE_OrderDetail_col_quantity = "quantity";
 
+    public static final String TABLE_Cart = "Cart";
+    public static final String TABLE_Cart_col_cartid = "id";
+    public static final String TABLE_Cart_col_floweridquantity = "floweridquantity";
+
+
     //---------------------------------------------------------------------------
 
+    public static final String CREATE_TABLE_Cart = "CREATE TABLE " + TABLE_Cart
+            + " ( "
+            + TABLE_Cart_col_cartid + " TEXT NOT NULL, "
+            + TABLE_Cart_col_floweridquantity + " TEXT NOT NULL"
+            + " );";
     public static final String CREATE_TABLE_Category = "CREATE TABLE " + TABLE_Category
                     + " ( "
                     + TABLE_Category_col_id + " INTEGER PRIMARY KEY AUTOINCREMENT, "
